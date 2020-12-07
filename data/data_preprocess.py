@@ -1,6 +1,6 @@
 import pandas as pd
 
-def load_data(file : string) -> pd.DataFrame:   #Baptiste
+def load_data(file : str) -> pd.DataFrame:   #Baptiste
   """
   Load the dataset
   """
@@ -37,7 +37,7 @@ def categoric_to_one_hot(df: pd.DataFrame) -> pd.DataFrame: #Baptiste
   df.drop(cols)
   return df
 
-def preprocess_data(file : string) -> pd.DataFrame:
+def preprocess_data(file : str) -> pd.DataFrame:
   df = load_data(file) 
   df = replace_na_values(df)
   df = categoric_to_one_hot(df)
