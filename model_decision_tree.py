@@ -1,9 +1,9 @@
 from sklearn import metrics
 from sklearn import tree
-from data import data_preprocess
+from data import generate_datasets
 
 def create_tree(db, criterion, splitter):  #Abdessamad
-   X, y = data_preprocess.preprocess_data(db)
+   X, y = data_preprocess.generate_datasets(db)
    max = 0
    NUM_SPLITS = 5
    clf = tree.DecisionTreeClassifier(criterion=criterion, splitter=splitter)
