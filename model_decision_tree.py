@@ -1,6 +1,9 @@
+from sklearn import metrics
+from sklearn import tree
+from data import data_preprocess
 
 def create_tree_cross_validation(dl, label_class, criterion, splitter): 
-   X, y = create_datasets(dl, label_class)
+   X, y = data_preprocess.preprocess_data(dl, label_class)
    max = 0
    NUM_SPLITS = 5
    clf = tree.DecisionTreeClassifier(criterion=criterion, splitter=splitter)
