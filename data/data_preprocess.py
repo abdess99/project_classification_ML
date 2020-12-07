@@ -32,7 +32,7 @@ def categoric_to_one_hot(df: pd.DataFrame) -> pd.DataFrame: #Baptiste
       cols.append(i)
       df[df.columns[i]] = pd.Categorical(df[df.columns[i]])
       #One hot encoded version of the categorical column#
-      new_cols = pd.get_dummies(df[df.columns[i]], prefix = list(data.columns)[i]] )
+      new_cols = pd.get_dummies(df[df.columns[i]], prefix = list(data.columns)[i] )
       df = pd.concat([df, new_cols] , axis=1, sort=False)
   df.drop(cols)
   return df
