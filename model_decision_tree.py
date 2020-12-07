@@ -30,4 +30,4 @@ def create_tree(db, criterion, splitter):  #Abdessamad
    recall = metrics.recall_score(test_y_f, predictions)
    precision=metrics.precision_score(test_y_f, predictions)
    
-return clf, precision, recall
+   return clf, precision, recall
