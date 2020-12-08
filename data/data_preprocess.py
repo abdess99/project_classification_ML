@@ -14,21 +14,12 @@ def replace_na_values(df : pd.DataFrame) -> pd.DataFrame: #Baptiste
   Return the data with the na values filled by the mean of the column
   """
   n = len(df.columns)
-  
   for i in range(n):
-
     index = 0
-    
     while type(df[df.columns[i]][index]) == float:
         index+=1
-
     if type(df[df.columns[i]][index])!= str:# and df[df.columns[i]].dtype != object:
-        
-        df[df.columns[i]]=df[df.columns[i]].fillna(df[df.columns[i]].mean())
-
-
-    
-        
+        df[df.columns[i]]=df[df.columns[i]].fillna(df[df.columns[i]].mean())   
     else:
         df[df.columns[i]]=df[df.columns[i]].fillna(df[df.columns[i]].mode()[0])
 
