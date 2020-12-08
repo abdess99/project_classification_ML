@@ -52,18 +52,6 @@ def categoric_to_one_hot(df: pd.DataFrame) -> pd.DataFrame: #Baptiste
  
   return df
 
-def apply_pca(df: pd.DataFrame) -> pd.DataFrame: #Baptiste
-  """
-  Reduce dimensions thanks to pca
-  """
-  pca = decomposition.PCA()
-  pca.fit_transform(df)
-  # Selecting only the best components
-  max_variance = np.max(pca.explained_variance_ratio_)
-  pc_number = len([v for v in pca.explained_variance_ratio_ if v >= max_variance/4])
-  df = df[:, :pc_number]
-  return pd.DataFrame(df)
-  return df
 
 def preprocess_data(file : str) -> pd.DataFrame: #Baptiste
   """
@@ -72,5 +60,4 @@ def preprocess_data(file : str) -> pd.DataFrame: #Baptiste
   df = load_data(file) 
   df = replace_na_values(df)
   df = categoric_to_one_hot(df)
-  df = apply_pca(df)
   return df
