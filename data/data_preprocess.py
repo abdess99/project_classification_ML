@@ -41,6 +41,9 @@ def categoric_to_one_hot(df: pd.DataFrame) -> pd.DataFrame: #Baptiste
   """
   Transform categorical data to one hot encoded vectors
   """
+  a=0
+  if df[df.columns[-1]].dtype!=int:
+    a=1
   n = len(df.columns)
   cols = [] #Categorical columns we will drop at the end
   for i in range(n):
@@ -52,6 +55,8 @@ def categoric_to_one_hot(df: pd.DataFrame) -> pd.DataFrame: #Baptiste
       new_cols = pd.get_dummies(df[df.columns[i]], prefix = list(df.columns)[i] )
       df = pd.concat([df, new_cols] , axis=1, sort=False)
   df.drop(df.columns[cols], axis=1, inplace=True)
+  if a==1:
+    df=df.drop(df.columns[-1],axis=1)
  
   return df
 
