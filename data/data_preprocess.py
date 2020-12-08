@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Dec  7 23:39:38 2020
-
-@author: baptistebignaud
-"""
-
 
 import pandas as pd
 
@@ -31,15 +23,14 @@ def replace_na_values(df : pd.DataFrame) -> pd.DataFrame: #Baptiste
         index+=1
 
     if type(df[df.columns[i]][index])!= str:# and df[df.columns[i]].dtype != object:
-        print("fillna")
-        a = df[df.columns[i]].copy()
-        a.dropna
-        df[df.columns[i]].fillna(a.mean(skipna=True))
+        
+        df[df.columns[i]]=df[df.columns[i]].fillna(df[df.columns[i]].mean())
+
 
     
         
     else:
-        df[df.columns[i]].fillna(df[df.columns[i]].mode()[0])
+        df[df.columns[i]]=df[df.columns[i]].fillna(df[df.columns[i]].mode()[0])
 
   df = df.applymap(lambda x: x.replace("\t", "") if type(x) == str else x)
   df = df.applymap(lambda x: x.replace(" ", "") if type(x) == str else x)
