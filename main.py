@@ -10,4 +10,4 @@ def main(db):        #Arthur
   graph.render(db)
   tree.plot_tree(clf) 
 
-  print('precision= {}, recall= {}'.format(precision, recall))
+
