@@ -59,7 +59,7 @@ def apply_pca(df: pd.DataFrame) -> pd.DataFrame: #Baptiste
   df_pca = pca.fit_transform(df)
   return df_pca
 
-def preprocess_data(file : str, n:str) -> pd.DataFrame: #Baptiste
+def preprocess_data(file : str) -> pd.DataFrame: #Baptiste
   """
   Preprocess the data
   """
