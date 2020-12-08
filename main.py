@@ -1,5 +1,13 @@
 
-def main(db):
+import graphviz
+def main(db):        #Arthur
+  """
+  db is the the file path
+  """
   clf,precision,recall=create_tree(db, 'gini', 'random')
   dot_data = tree.export_graphviz(clf)
-  print(precision,recall)
+  graph = graphviz.Source(dot_data)
+  graph.render(db)
+  tree.plot_tree(clf) 
+
+  print('precision= {}, recall= {}'.format(precision, recall))
