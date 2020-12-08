@@ -4,7 +4,7 @@ from sklearn.model_selection import KFold
 
 def create_tree(db, criterion, splitter):  #Abdessamad
    X, y = create_datasets(db)
-   
+  
    max = 0
    NUM_SPLITS = 5
    clf = tree.DecisionTreeClassifier(criterion=criterion, splitter=splitter)
