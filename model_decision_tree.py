@@ -3,7 +3,7 @@ from sklearn import tree
 from data import generate_datasets
 
 def create_tree(db, criterion, splitter):  #Abdessamad
-   X, y = generate_datasets.create_datasets(db)
+   X, y = create_datasets(db)
    max = 0
    NUM_SPLITS = 5
    clf = tree.DecisionTreeClassifier(criterion=criterion, splitter=splitter)
