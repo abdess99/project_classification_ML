@@ -51,8 +51,20 @@ def categoric_to_one_hot(df: pd.DataFrame) -> pd.DataFrame: #Baptiste
  
   return df
 
-def preprocess_data(file : str) -> pd.DataFrame:
+def apply_pca(df: pd.DataFrame) -> pd.DataFrame: #Baptiste
+  """
+  Reduce dimensions thanks to pca
+  """
+  pca = decomposition.PCA(n_components == 'mle',svd_solver == 'full')
+  df_pca = pca.fit_transform(df)
+  return df_pca
+
+def preprocess_data(file : str, n:str) -> pd.DataFrame: #Baptiste
+  """
+  Preprocess the data
+  """
   df = load_data(file) 
   df = replace_na_values(df)
   df = categoric_to_one_hot(df)
+  df = apply_pca(df)
   return df
