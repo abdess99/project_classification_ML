@@ -1,3 +1,12 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Dec  7 23:39:38 2020
+
+@author: baptistebignaud
+"""
+
+
 import pandas as pd
 
 def load_data(file : str) -> pd.DataFrame:   #Baptiste
@@ -19,17 +28,16 @@ def replace_na_values(df : pd.DataFrame) -> pd.DataFrame: #Baptiste
     index = 0
     
     while type(df[df.columns[i]][index]) == float:
-        print("While",type(df[df.columns[i]][index]))
         index+=1
 
     if type(df[df.columns[i]][index])!= str:# and df[df.columns[i]].dtype != object:
-        df[df.columns[i]].fillna(df[df.columns[i]].mean())
-        print("If",df[df.columns[i]].dtype)
+        df[df.columns[i]].fillna(df[df.columns[i]].mean(skipna=True))
+
     
         
     else:
       df[df.columns[i]].fillna(df[df.columns[i]].mode()[0])
-      print("Else",df[df.columns[i]].dtype, type(df[df.columns[i]][1]) )
+
   df = df.applymap(lambda x: x.replace("\t", "") if type(x) == str else x)
   df = df.applymap(lambda x: x.replace(" ", "") if type(x) == str else x)
  
@@ -50,7 +58,7 @@ def categoric_to_one_hot(df: pd.DataFrame) -> pd.DataFrame: #Baptiste
       new_cols = pd.get_dummies(df[df.columns[i]], prefix = list(df.columns)[i] )
       df = pd.concat([df, new_cols] , axis=1, sort=False)
   df.drop(df.columns[cols], axis=1, inplace=True)
-  print(cols)
+ 
   return df
 
 def preprocess_data(file : str) -> pd.DataFrame:
