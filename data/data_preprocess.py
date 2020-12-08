@@ -56,7 +56,7 @@ def apply_pca(df: pd.DataFrame) -> pd.DataFrame: #Baptiste
   """
   Reduce dimensions thanks to pca
   """
-  pca = decomposition.PCA(n_components == 'mle',svd_solver == 'full')
+  pca = decomposition.PCA(n_components = 'mle',svd_solver = 'full')
   df_pca = pca.fit_transform(df)
   return df_pca
 
