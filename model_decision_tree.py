@@ -40,5 +40,6 @@ def create_tree(db, criterion, splitter):  #Abdessamad
    clf.fit(X_train_f, y_train_f)
    recall = metrics.recall_score(y_test_f, predictions)
    precision=metrics.precision_score(y_test_f, predictions)
-   
+   print('precision= {}, recall= {}'.format(precision, recall))
+
    return clf, precision, recall
