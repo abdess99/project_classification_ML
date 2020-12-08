@@ -1,5 +1,6 @@
 
 import pandas as pd
+from  sklearn import decomposition
 
 def load_data(file : str) -> pd.DataFrame:   #Baptiste
   """
